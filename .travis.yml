@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - "8"
+
+cache: yarn
+
+install: yarn
+
+jobs:
+  include:
+    - state: test
+      if: tag IS present
+      script: yarn test
+
+    - stage: release
+      if: tag IS present
+      script: yarn build
+      # before_deploy:
+      #   - cp package.json ./dist
+      #   - cd dist
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          branch: master
+          tags: true

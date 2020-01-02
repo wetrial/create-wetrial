@@ -1,2 +1,3 @@
 # wetrial-cli
-wetrial的cli
+
+wetrial的脚手架

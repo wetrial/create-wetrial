@@ -1,0 +1,40 @@
+{
+  "name": "{{name}}",
+  "version": "{{version}}",
+  "description": "{{description}}",
+  "main": "lib/wetrial.js",
+  "bin": {
+    "wetrial": "./bin/wetrial"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1",
+    "download-git-repo": "^3.0.2",
+    "handlebars": "^4.5.3",
+    "inquirer": "^7.0.1",
+    "latest-version": "^5.1.0",
+    "log-symbols": "^3.0.0",
+    "metalsmith": "^2.3.0",
+    "ora": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "patch": "yarn version --patch && git push origin master && git push origin --tags",
+    "minor": "yarn version --minor && git push origin master && git push origin --tags",
+    "major": "yarn version --major && git push origin master && git push origin --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetrial/wetrial-cli.git"
+  },
+  "author": "xiexingen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wetrial/wetrial-cli/issues"
+  },
+  "homepage": "https://github.com/wetrial/wetrial-cli#readme",
+  "files": ["bin", "lib", "package.json", "README.md", "LICENSE"]
+}

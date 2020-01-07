@@ -1,2 +1,6 @@
-yarn-error.log
 /node_modules
+/yarn.lock
+/dist
+package-lock.json
+.DS_Store
+coverage

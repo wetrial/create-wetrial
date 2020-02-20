@@ -18,8 +18,8 @@ if (args.v || args.version) {
   process.exit(0);
 }
 
-if (!semver.satisfies(process.version, '>= 8.0.0')) {
-  console.error(chalk.red('✘ The generator will only work with Node v8.0.0 and up!'));
+if (!semver.satisfies(process.version, '>= 10.0.0')) {
+  console.error(chalk.red('✘ The generator will only work with Node v10.0.0 and up!'));
   process.exit(1);
 }
 

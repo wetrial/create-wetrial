@@ -1,5 +1,7 @@
 # create-wetrial
 
+> Base umi
+
 Creates a UmiJS application/plugin/block/library using the command line.
 
 [![codecov](https://codecov.io/gh/wetrial/create-wetrial/branch/master/graph/badge.svg)](https://codecov.io/gh/wetrial/create-wetrial) [![NPM version](https://img.shields.io/npm/v/create-wetrial.svg?style=flat)](https://npmjs.org/package/create-wetrial) [![CircleCI](https://circleci.com/gh/wetrial/create-wetrial/tree/master.svg?style=svg)](https://circleci.com/gh/wetrial/create-wetrial/tree/master) [![NPM downloads](http://img.shields.io/npm/dm/create-wetrial.svg?style=flat)](https://npmjs.org/package/create-wetrial) [![GitHub Actions status](https://github.com/wetrial/create-wetrial/workflows/Node%20CI/badge.svg)](https://github.com/wetrial/create-wetrial)
@@ -7,36 +9,22 @@ Creates a UmiJS application/plugin/block/library using the command line.
 ## Usage
 
 ```bash
-$ yarn create umi [appName]
+$ yarn create wetrial [appName]
 ```
 
 ## Boilerplates
 
-- `ant-design-pro` - Create project with a layout-only ant-design-pro boilerplate, use together with umi block.
 - `app` - Create project with a simple boilerplate, support typescript.
 - `block` - Create a umi block.
-- `library` - Create a library with umi.
-- `plugin` - Create a umi plugin.
 
 ## Usage Example
 
 ```bash
-$ yarn create umi
+$ yarn create wetrial
 
 ? Select the boilerplate type (Use arrow keys)
-  ant-design-pro  - Create project with a layout-only ant-design-pro boilerplate, use together with umi block.
 ❯ app             - Create project with a simple boilerplate, support typescript.
   block           - Create a umi block.
-  library         - Create a library with umi.
-  plugin          - Create a umi plugin.
-
-? Do you want to use typescript? (y/N)
-
-? What functionality do you want to enable? (Press <space> to select, <a> to toggle all, <i> to invert selection)
-❯◯ antd
- ◯ dva
- ◯ code splitting
- ◯ dll
 
   create abc/package.json
   create abc/.gitignore
@@ -61,7 +49,7 @@ $ yarn create umi
 
 ## FAQ
 
-### `yarn create umi` command failed
+### `yarn create wetrial` command failed
 
 这个问题基本上都是因为没有添加 yarn global module 的路径到 PATH 环境变量引起的。
 
@@ -87,7 +75,7 @@ $ create-wetrial
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/wetrial/umi/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
+Please open an issue [here](https://github.com/wetrial/create-wetrial/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
 
 ## LICENSE
 

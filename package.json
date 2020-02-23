@@ -1,6 +1,6 @@
 {
   "name": "create-wetrial",
-  "version": "0.19.0",
+  "version": "0.19.1",
   "description": "Creates a wetrial application using the command line.",
   "homepage": "https://github.com/wetrial/create-wetrial",
   "bugs": {

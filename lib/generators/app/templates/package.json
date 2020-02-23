@@ -1,60 +1,133 @@
 {
+  "name": "<%= name %>",
+  "version": "0.0.1",
   "private": true,
+  "description": "<%= description %>",
   "scripts": {
-    "start": "umi dev",
+    "analyze": "cross-env ANALYZE=1 umi build",
     "build": "umi build",
+    "patch": "yarn version --patch && git push origin master && git push origin --tags",
+    "minor": "yarn version --minor && git push origin master && git push origin --tags",
+    "major": "yarn version --major && git push origin master && git push origin --tags",
+    "new": "node scripts/template",
+    "docker:build": "docker-compose -f ./docker/docker-compose.yml build",
+    "docker:push": "npm run docker-hub:build && npm run docker:tag && docker push wetrial/template",
+    "docker:tag": "docker tag template wetrial/template",
+    "fetch:blocks": "pro fetch-blocks --branch antd@4 && npm run prettier",
+    "format-imports": "cross-env import-sort --write '**/*.{js,jsx,ts,tsx}'",
+    "functions:build": "netlify-lambda build ./lambda",
+    "functions:run": "cross-env NODE_ENV=dev netlify-lambda serve ./lambda",
+    "i18n-remove": "pro i18n-remove --locale=zh-CN --write",
+    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:prettier": "check-prettier lint",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
+    "prettier": "prettier -c --write \"**/*\"",
+    "start": "cross-env REACT_APP_ENV=dev umi dev",
+    "dev": "npm run start:dev",
+    "start:dev": "cross-env REACT_APP_ENV=dev MOCK=none umi dev",
+    "start:no-mock": "cross-env MOCK=none umi dev",
+    "start:no-ui": "cross-env UMI_UI=none umi dev",
+    "start:pre": "cross-env REACT_APP_ENV=pre umi dev",
+    "start:test": "cross-env REACT_APP_ENV=test MOCK=none umi dev",
     "test": "umi test",
-<% if (isTypeScript) { -%>
-    "lint": "eslint {src,mock,tests}/**/*.{ts,tsx} --fix",
-<% } -%>
-<% if (!isTypeScript) { -%>
-    "lint": "eslint {src,mock,tests}/**/*.{js,jsx} --fix",
-<% } -%>
-    "precommit": "lint-staged"
+    "test:all": "node ./tests/run-tests.js",
+    "test:component": "umi test ./src/components",
+    "tsc": "tsc",
+    "ui": "umi ui"
   },
-  "dependencies": {
-<% if (reactFeatures.includes('dva')) { -%>
-    "dva": "^2.6.0-beta.6",
-<% } -%>
-<% if (reactFeatures.includes('antd')) { -%>
-    "antd": "^3.19.5",
-<% } -%>
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "devDependencies": {
-<% if (isTypeScript) { -%>
-    "@types/jest": "^23.3.12",
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
-    "@types/react-test-renderer": "^16.0.3",
-<% } -%>
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.4.0",
-    "eslint-config-umi": "^1.4.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.11.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.2.2",
-    "react-test-renderer": "^16.7.0",
-<% if (isTypeScript) { -%>
-    "umi": "^2.9.0",
-    "umi-plugin-react": "^1.8.0",
-    "umi-types": "^0.3.0"
-<% } else { -%>
-    "umi": "^2.7.7",
-    "umi-plugin-react": "^1.8.4"
-<% } -%>
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
   },
   "lint-staged": {
-<% if (isTypeScript) { -%>
-    "*.{ts,tsx}": ["eslint --fix", "git add"],
-<% } -%>
-    "*.{js,jsx}": ["eslint --fix", "git add"]
+    "**/*.less": "stylelint --syntax less",
+    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
+  "dependencies": {
+    "@ant-design/icons": "^4.0.0-alpha.19",
+    "@ant-design/pro-layout": "5.0.0",
+    "@wetrial/component": "^0.0.2",
+    "@wetrial/core": "^1.1.4",
+    "@wetrial/hooks": "^0.10.29",
+    "antd": "^4.0.0-rc.5",
+    "classnames": "^2.2.6",
+    "dva": "^2.6.0-beta.20",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "path-to-regexp": "^2.4.0",
+    "qs": "^6.9.1",
+    "react": "^16.12.0",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "redux": "^4.0.5",
+    "umi": "^2.13.3",
+    "umi-plugin-antd-icon-config": "^1.0.3",
+    "umi-plugin-antd-theme": "^1.0.15",
+    "umi-plugin-react": "^1.15.2",
+    "use-merge-value": "^1.0.1"
+  },
+  "devDependencies": {
+    "@ant-design/pro-cli": "^1.0.19",
+    "@types/classnames": "^2.2.9",
+    "@types/express": "^4.17.2",
+    "@types/history": "^4.7.5",
+    "@types/jest": "^25.1.2",
+    "@types/lodash": "^4.14.149",
+    "@types/qs": "^6.9.1",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-helmet": "^5.0.15",
+    "@umijs/fabric": "^2.0.2",
+    "chalk": "^3.0.0",
+    "check-prettier": "^1.0.3",
+    "cross-env": "^7.0.0",
+    "cross-port-killer": "^1.2.1",
+    "enzyme": "^3.11.0",
+    "express": "^4.17.1",
+    "husky": "^4.2.3",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-parser-babylon": "^6.0.0",
+    "import-sort-parser-typescript": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
+    "jest-puppeteer": "^4.4.0",
+    "jsdom-global": "^3.0.2",
+    "lint-staged": "^10.0.0",
+    "mockjs": "^1.0.1-beta3",
+    "netlify-lambda": "^1.6.3",
+    "node-fetch": "^2.6.0",
+    "prettier": "^1.19.1",
+    "pro-download": "^1.0.1",
+    "serverless-http": "^2.3.1",
+    "stylelint": "^13.0.0",
+    "umi-plugin-antd-icon-config": "^1.0.2",
+    "umi-plugin-pro": "^1.0.2",
+    "umi-types": "^0.5.12"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^2.0.0"
   },
   "engines": {
-    "node": ">=8.0.0"
-  }
+    "node": ">=10.0.0"
+  },
+  "checkFiles": [
+    "src/**/*.js*",
+    "src/**/*.ts*",
+    "src/**/*.less",
+    "config/**/*.js*",
+    "scripts/**/*.js"
+  ]
 }

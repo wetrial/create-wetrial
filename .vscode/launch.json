@@ -25,8 +25,8 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}\\bin\\wetrial.js",
-      "args": ["init", "hello"],
+      "program": "${workspaceFolder}\\cli.js",
+      "args": ["--type", "app", "xxg-test"],
       "sourceMaps": true
     }
   ]

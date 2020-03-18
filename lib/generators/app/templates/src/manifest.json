@@ -1,6 +1,6 @@
 {
-  "name": "wetrial-template",
-  "short_name": "wetrial-template",
+  "name": "Wetrial-Template",
+  "short_name": "Wetrial-Template",
   "display": "standalone",
   "start_url": "./?utm_source=homescreen",
   "theme_color": "#002140",

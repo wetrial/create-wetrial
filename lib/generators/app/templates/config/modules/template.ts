@@ -1,15 +1,20 @@
-import { IRoute } from 'umi-types';
+import { IBestAFSRoute } from '@umijs/plugin-layout';
 
 /**
  * 权限定义
  */
-const <%= external.upperCaseName %>Permissions = {
+const Permissions = {
   template: {
     dashboard: {
-      base: 'template.dashboard.base',
+      index: 'template.dashboard',
     },
-    list: {
-      base: 'template.list.base',
+    sample: {
+      index: 'template.sample',
+      list: {
+        index: 'template.sample.list',
+        edit: 'template.sample.list.edit',
+        delete: 'template.sample.list.delete',
+      },
     },
   },
 };
@@ -17,29 +22,54 @@ const <%= external.upperCaseName %>Permissions = {
 /**
  * 路由定义
  */
-const <%= external.upperCaseName %>Routes: IRoute[] = [
+const TemplateRoutes: IBestAFSRoute[] = [
   {
-    path: '/<%= external.lowerCaseName %>',
-    name: '看板',
-    icon: 'dashboard',
-    authority: <%= external.upperCaseName %>Permissions.template.dashboard.base,
-    component: './<%= external.upperCaseName %>/Dashboard/index',
-  },
-  {
-    path: '/<%= external.lowerCaseName %>-list',
-    name: '列表',
-    authority: <%= external.upperCaseName %>Permissions.template.list.base,
-    icon: 'smile',
+    path: '/template',
+    menu: {
+      name: '欢迎', // 兼容此写法
+      // hideChildren:false,
+      flatMenu: true,
+    },
     routes: [
-      { path: '/<%= external.lowerCaseName %>-table', redirect: '/<%= external.lowerCaseName %>-list/table' },
       {
-        path: 'table',
-        name: '普通表格',
-        component: './<%= external.upperCaseName %>/TableList/index',
+        path: '/template',
+        redirect: 'dashboard',
+      },
+      {
+        path: 'dashboard',
+        name: '看板',
+        // icon: 'dashboard',
+        access: Permissions.template.dashboard.index,
+        component: '@/pages/template/dashboard/index',
+      },
+      {
+        path: 'sample',
+        name: '案例',
+        access: Permissions.template.sample.index,
+        //icon: 'smile',
+        routes: [
+          {
+            path: '/template/sample',
+            redirect: 'list',
+          },
+          {
+            path: 'list',
+            name: '列表',
+            access: Permissions.template.sample.list.index,
+            component: '@/pages/template/sample/list/index',
+            exact: true,
+          },
+          {
+            path: 'list/edit/:id?',
+            component: '@/pages/template/sample/list/edit',
+            access: Permissions.template.sample.list.edit,
+            exact: true,
+          },
+        ],
       },
     ],
   },
 ];
 
-export default <%= external.upperCaseName %>Permissions;
-export { <%= external.upperCaseName %>Routes };
+export default Permissions;
+export { TemplateRoutes };

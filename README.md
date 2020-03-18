@@ -8,18 +8,18 @@ Creates a UmiJS application/plugin/block/library using the command line.
 
 ## Usage
 
-```bash
+``` bash
 $ yarn create wetrial [appName]
 ```
 
 ## Boilerplates
 
-- `app` - Create project with a simple boilerplate, support typescript.
-- `block` - Create a umi block.
+* `app` - Create project with a simple boilerplate, support typescript.
+* `block` - Create a umi block.
 
 ## Usage Example
 
-```bash
+``` bash
 $ yarn create wetrial
 
 ? Select the boilerplate type (Use arrow keys)
@@ -55,23 +55,27 @@ $ yarn create wetrial
 
 先执行 `yarn global bin` 拿到路径，然后添加到 PATH 环境变量里。
 
-```bash
+``` bash
 $ yarn global bin
 /usr/local/bin
 ```
 
 你也可以尝试用 npm，
 
-```bash
+``` bash
 $ npm create umi
 ```
 
 或者手动安装 create-wetrial，并执行他，
 
-```bash
+``` bash
 $ npm install create-wetrial -g
 $ create-wetrial
 ```
+
+## debugger
+
+node cli.js
 
 ## Questions & Suggestions
 
@@ -80,3 +84,4 @@ Please open an issue [here](https://github.com/wetrial/create-wetrial/issues?q=i
 ## LICENSE
 
 MIT
+

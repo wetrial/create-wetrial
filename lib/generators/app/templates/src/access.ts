@@ -1,10 +1,10 @@
 import { IKeyValue } from '@wetrial/core/types';
-import TemplatePermissions from '@config/modules/template';
+import <%= external.upperCaseName %>Permissions from '@config/modules/<%= external.lowerCaseName %>';
 
 export default function(initialState: { permissions: string[] } = { permissions: [] }) {
   const { permissions } = initialState;
   const allPermissions = {
-    ...TemplatePermissions,
+    ...<%= external.upperCaseName %>Permissions,
   };
 
   const flatPermissions = dgFlatPermissions(allPermissions, permissions);

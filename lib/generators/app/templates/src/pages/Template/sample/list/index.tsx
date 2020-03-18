@@ -6,7 +6,7 @@ import { Button, Form, Input, Table, Divider, Progress, Switch, Popconfirm } fro
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import { ColumnType } from 'antd/es/table';
 import { convertListToFlat } from '@/utils';
-import TemplatePermissions from '@config/modules/template';
+import <%= external.upperCaseName %>Permissions from '@config/modules/<%= external.lowerCaseName %>';
 import { StagedDict } from './prop.d';
 import { getList, remove } from './service';
 
@@ -120,20 +120,20 @@ export default (props: ConnectProps) => {
       fixed: 'right',
       render: (_, record) => (
         <>
-          <Access accessible={access[TemplatePermissions.template.sample.list.edit]}>
+          <Access accessible={access[<%= external.upperCaseName %>Permissions.template.sample.list.edit]}>
             <Button size="small" type="primary" onClick={handleEdit.bind(null, record.id)}>
               编辑
             </Button>
           </Access>
           <Access
             accessible={
-              access[TemplatePermissions.template.sample.list.edit] &&
-              access[TemplatePermissions.template.sample.list.delete]
+              access[<%= external.upperCaseName %>Permissions.template.sample.list.edit] &&
+              access[<%= external.upperCaseName %>Permissions.template.sample.list.delete]
             }
           >
             <Divider type="vertical" />
           </Access>
-          <Access accessible={access[TemplatePermissions.template.sample.list.delete]}>
+          <Access accessible={access[<%= external.upperCaseName %>Permissions.template.sample.list.delete]}>
             <Popconfirm title="确定要删除" onConfirm={handleDelete.bind(null, record.id)}>
               <Button size="small" type="danger">
                 删除

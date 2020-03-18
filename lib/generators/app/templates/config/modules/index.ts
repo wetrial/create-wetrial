@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-import { TemplateRoutes } from './template';
+import { <%= external.upperCaseName %>Routes } from './<%= external.lowerCaseName %>';
 
 // umi routes: https://umijs.org/zh/guide/router.html
 const routes: IBestAFSRoute[] = [
@@ -26,7 +26,7 @@ const routes: IBestAFSRoute[] = [
           },
         ],
       },
-      ...TemplateRoutes,
+      ...<%= external.upperCaseName %>Routes,
     ],
   },
 ];

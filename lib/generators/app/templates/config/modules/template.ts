@@ -22,7 +22,7 @@ const Permissions = {
 /**
  * 路由定义
  */
-const TemplateRoutes: IBestAFSRoute[] = [
+const <%= external.upperCaseName %>Routes: IBestAFSRoute[] = [
   {
     path: '/template',
     menu: {
@@ -40,7 +40,7 @@ const TemplateRoutes: IBestAFSRoute[] = [
         name: '看板',
         // icon: 'dashboard',
         access: Permissions.template.dashboard.index,
-        component: '@/pages/template/dashboard/index',
+        component: '@/pages/<%= external.lowerCaseName %>/dashboard/index',
       },
       {
         path: 'sample',
@@ -56,12 +56,12 @@ const TemplateRoutes: IBestAFSRoute[] = [
             path: 'list',
             name: '列表',
             access: Permissions.template.sample.list.index,
-            component: '@/pages/template/sample/list/index',
+            component: '@/pages/<%= external.lowerCaseName %>/sample/list/index',
             exact: true,
           },
           {
             path: 'list/edit/:id?',
-            component: '@/pages/template/sample/list/edit',
+            component: '@/pages/<%= external.lowerCaseName %>/sample/list/edit',
             access: Permissions.template.sample.list.edit,
             exact: true,
           },
@@ -72,4 +72,4 @@ const TemplateRoutes: IBestAFSRoute[] = [
 ];
 
 export default Permissions;
-export { TemplateRoutes };
+export { <%= external.upperCaseName %>Routes };

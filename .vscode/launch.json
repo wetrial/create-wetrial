@@ -26,7 +26,8 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}\\cli.js",
-      "args": ["--type", "modules", "@wetrial/template"],
+      // "args": ["--type", "modules", "@wetrial/template"],
+      "args": ["--type", "app", "@wetrial/template"],
       "sourceMaps": true
     }
   ]

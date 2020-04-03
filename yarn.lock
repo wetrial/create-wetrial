@@ -1271,10 +1271,10 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@wetrial/template@^5.0.0":
-  version "5.0.0"
-  resolved "http://npm.xxgtalk.cn/@wetrial%2ftemplate/-/template-5.0.0.tgz#7e06b729afdb8d6bb759593d60593cff7e233be6"
-  integrity sha512-tC0tHvngFv94Lvv0k+uBh7d9LQcMr5yX+kK/xmcxf5YDKnuWxYmX2BRoMLKbM1SGFrAi8LA66waFayLY27Ts2Q==
+"@wt/blogs@^0.0.2":
+  version "0.0.2"
+  resolved "http://172.16.170.34:8000/@wt%2fblogs/-/blogs-0.0.2.tgz#eff47bb6a9bafa0fb306f6637b4b5bf48dd06a25"
+  integrity sha512-8CbPDnGYDO/eHtHXoWU/oo/pYUpo8SWBUjQCvWWySLtT4aiHIvLH+JI/2NU/qTqm6KhBrgITXmT+W+pKHTlYSA==
 
 abab@^2.0.0:
   version "2.0.3"

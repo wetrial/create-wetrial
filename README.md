@@ -14,8 +14,9 @@ $ yarn create wetrial [appName]
 
 ## Boilerplates
 
-- `app` - Create project with a simple boilerplate, support typescript.
-- `block` - Create a umi block.
+- `app` - 创建一个宿主应用
+- `module` - 创建一个子模块
+- `modules` - 管理子模块
 
 ## Usage Example
 
@@ -23,8 +24,9 @@ $ yarn create wetrial [appName]
 $ yarn create wetrial
 
 ? Select the boilerplate type (Use arrow keys)
-❯ app             - Create project with a simple boilerplate, support typescript.
-  block           - Create a umi block.
+❯ app             - 创建一个宿主应用
+  module           - 创建一个子模块
+  modules           - 管理子模块
 
   create abc/package.json
   create abc/.gitignore

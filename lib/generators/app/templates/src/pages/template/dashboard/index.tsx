@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAccess, Access, useModel } from 'umi';
 import { Card, DatePicker, Button } from 'antd';
-import <%= external.upperCaseName %>Permissions from '@config/modules/<%= external.lowerCaseName %>';
+import { Permissions } from '@config/routes';
 import styles from './index.less';
 
 export default (): React.ReactNode => {
@@ -20,7 +20,7 @@ export default (): React.ReactNode => {
           刷新权限
         </Button>
       </Card>
-      <Access accessible={access[<%= external.upperCaseName %>Permissions.template.dashboard.index]} fallback="无权限">
+      <Access accessible={access[Permissions.template.dashboard.index]} fallback="无权限">
         有权限才能看到的信息
       </Access>
     </div>

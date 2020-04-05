@@ -3,10 +3,10 @@ import { join } from 'path';
 // import AntdDayjsWebpackPlugin from 'antd-dayjs-webpack-plugin';
 // import slash from 'slash2';
 // import themePluginConfig from './themePluginConfig';
-import proxy from './proxy';
-import themeConfig from './theme.config';
-import routes from './modules';
-import chinaWebpack from './plugin.chinaWebpack';
+import proxy from './config/proxy';
+import themeConfig from './config/theme.config';
+import routes from './config/routes';
+import chinaWebpack from './config/plugin.chinaWebpack';
 
 const { REACT_APP_ENV = 'dev' } = process.env;
 
@@ -33,20 +33,21 @@ export default defineConfig({
     skipModelValidate: true,
   },
   locale: {
-    // default zh-CN
     default: 'zh-CN',
+    antd: true,
     // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: false,
   },
-  // dynamicImport: {
-  //   loading: '@/components/PageLoading/index',
-  // },
+  dynamicImport: {
+    loading: '@/components/PageLoading/index',
+  },
   // 暂时关闭
   pwa: false,
   history: {
     type: 'browser',
   },
   hash: true,
+  ignoreMomentLocale: true,
   targets: {
     ie: 11,
   },
@@ -57,8 +58,9 @@ export default defineConfig({
     REACT_APP_ENV: REACT_APP_ENV,
   },
   alias: {
-    themes: join(__dirname, '../src/themes'),
-    '@config': join(__dirname, '.'),
+    themes: join(__dirname, './src/themes'),
+    '@config': join(__dirname, './config'),
+    '@modules/*': join(__dirname, './src/modules/*'),
   },
   lessLoader: {
     javascriptEnabled: true,

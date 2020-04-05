@@ -1,5 +1,7 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
 
+const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/';
+
 /**
  * 权限定义
  */
@@ -22,46 +24,46 @@ const Permissions = {
 /**
  * 路由定义
  */
-const <%= external.upperCaseName %>Routes: IBestAFSRoute[] = [
+const Routes: IBestAFSRoute[] = [
   {
-    path: '/template',
+    path: '/<%= external.lowerCaseName %>',
     menu: {
-      name: '欢迎', // 兼容此写法
+      name: '博客', // 兼容此写法
       // hideChildren:false,
       flatMenu: true,
     },
     routes: [
       {
-        path: '/template',
+        path: '/<%= external.lowerCaseName %>',
         redirect: 'dashboard',
       },
       {
         path: 'dashboard',
-        name: '看板',
-        // icon: 'dashboard',
+        name: '博客看板',
+        icon: 'dashboard',
         access: Permissions.template.dashboard.index,
-        component: '@/pages/<%= external.lowerCaseName %>/dashboard/index',
+        component: `${ROUTE_BASE}dashboard/index`,
       },
       {
         path: 'sample',
-        name: '案例',
+        name: '博客例子',
         access: Permissions.template.sample.index,
-        //icon: 'smile',
+        icon: 'smile',
         routes: [
           {
-            path: '/template/sample',
+            path: '/<%= external.lowerCaseName %>/sample',
             redirect: 'list',
           },
           {
             path: 'list',
-            name: '列表',
+            name: '博客列表',
             access: Permissions.template.sample.list.index,
-            component: '@/pages/<%= external.lowerCaseName %>/sample/list/index',
+            component: `${ROUTE_BASE}sample/list/index`,
             exact: true,
           },
           {
             path: 'list/edit/:id?',
-            component: '@/pages/<%= external.lowerCaseName %>/sample/list/edit',
+            component: `${ROUTE_BASE}sample/list/edit`,
             access: Permissions.template.sample.list.edit,
             exact: true,
           },
@@ -71,5 +73,5 @@ const <%= external.upperCaseName %>Routes: IBestAFSRoute[] = [
   },
 ];
 
-export default Permissions;
-export { <%= external.upperCaseName %>Routes };
+export default Routes;
+export { Permissions };

@@ -2,6 +2,8 @@
 
 1. module 中.gitigonre 中没有 src/modules
 
-代码生成后再额外增加一行内容
+2. module 中删除 docker、lambda 目录
 
-2. module 中 没有 docker、lambda 目录
+3. app 中删除 modules 目录
+
+4. app 中 package.json 的"app-type":"app"；module 中为 module

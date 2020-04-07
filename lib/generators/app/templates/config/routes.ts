@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-import BlogRoutes from '../src/modules//<%= external.lowerCaseName %>';
+// import BlogRoutes from '../src/modules//<%= external.lowerCaseName %>';
 
 /**
  * 权限定义
@@ -23,7 +23,7 @@ const Permissions = {
 /**
  * 路由定义
  */
-const TemplateRoutes: IBestAFSRoute[] = [
+const PageRoutes: IBestAFSRoute[] = [
   {
     path: '/template',
     menu: {
@@ -97,11 +97,11 @@ const routes: IBestAFSRoute[] = [
           },
         ],
       },
-      ...TemplateRoutes,
-      ...BlogRoutes,
+      ...PageRoutes,
+      // ...<%= external.upperCaseName %>Routes,
     ],
   },
 ];
 
 export default routes;
-export { Permissions, TemplateRoutes };
+export { Permissions, PageRoutes };

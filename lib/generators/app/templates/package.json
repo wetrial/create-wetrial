@@ -1,6 +1,7 @@
 {
   "name": "<%= name %>",
   "version": "0.0.1",
+  "app-type":"app",
   "private": true,
   "description": "<%= description %>",
   "scripts": {

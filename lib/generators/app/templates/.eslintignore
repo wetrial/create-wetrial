@@ -3,5 +3,5 @@
 /config
 .history
 <% if (external.isApp) { %>
- /src/modules
+/src/modules
 <% } %>

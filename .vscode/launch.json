@@ -27,7 +27,7 @@
       "name": "Launch Program",
       "program": "${workspaceFolder}\\cli.js",
       // "args": ["--type", "modules", "@wetrial/template"],
-      "args": ["--type", "app", "--subtype", "create", "@wetrial/sample"],
+      "args": ["--type", "module", "--subtype", "create", "@wetrial/ae_sae"],
       "sourceMaps": true
     }
   ]

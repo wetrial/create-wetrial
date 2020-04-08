@@ -36,3 +36,6 @@ screenshot
 .eslintcache
 
 build
+<% if (external.isApp) { %>
+/src/modules
+<% } %>

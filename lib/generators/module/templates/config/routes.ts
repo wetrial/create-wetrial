@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-import BlogRoutes from '../src/modules//<%= external.lowerCaseName %>';
+<% if (external.isApp) { %>//<% } %> import <%= external.upperCaseName %>Routes from '../src/modules/<%= external.lowerCaseName %>';
 
 /**
  * 权限定义
@@ -83,6 +83,10 @@ const routes: IBestAFSRoute[] = [
     component: '@/pages/body',
     routes: [
       {
+        path: '/',
+        redirect: '/template',
+      },
+      {
         path: '/account',
         component: '@/layouts/UserLayout',
         layout: {
@@ -98,7 +102,7 @@ const routes: IBestAFSRoute[] = [
         ],
       },
       ...PageRoutes,
-      ...<%= external.upperCaseName %>Routes,
+      <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Routes,
     ],
   },
 ];

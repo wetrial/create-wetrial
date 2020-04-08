@@ -1,12 +1,13 @@
 import { IKeyValue } from '@wetrial/core/types';
 import { Permissions } from '@config/routes';
-import <%= external.upperCaseName %>Permissions from '@/modules/<%= external.lowerCaseName %>';
+<% if (external.isApp) { %>//<% } %> import <%= external.upperCaseName %>Permissions from '@/modules/<%= external.lowerCaseName %>';
+
 
 export default function(initialState: { permissions: string[] } = { permissions: [] }) {
   const { permissions } = initialState;
   const allPermissions = {
     ...Permissions,
-    ...<%= external.upperCaseName %>Permissions,
+    <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Permissions,
   };
 
   const flatPermissions = dgFlatPermissions(allPermissions, permissions);

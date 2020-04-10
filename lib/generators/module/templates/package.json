@@ -1,6 +1,5 @@
 {
   "name": "<%= name %>",
-  "app-type":"<% if (external.isApp) { %>app<% } else { %>module<% } %>",
   "version": "0.0.1",
   "description": "<%= description %>",
   "scripts": {

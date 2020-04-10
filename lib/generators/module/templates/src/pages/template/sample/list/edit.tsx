@@ -96,7 +96,7 @@ export default () => {
                 <Form.Item
                   name="progress"
                   valuePropName="value"
-                  style={{ display: 'inline-block', width: 'calc(100% - 35px)' }}
+                  style={{ display: 'inline-block', width: 'calc(100% - 45px)' }}
                 >
                   <Slider />
                 </Form.Item>

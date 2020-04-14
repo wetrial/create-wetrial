@@ -80,7 +80,7 @@ const routes: IBestAFSRoute[] = [
       name: '欢迎',
       flatMenu: true,
     },
-    component: '@/pages/body',
+    // component: '@/pages/body',
     routes: [
       {
         path: '/',
@@ -88,7 +88,7 @@ const routes: IBestAFSRoute[] = [
       },
       {
         path: '/account',
-        component: '@/layouts/UserLayout',
+        // component: '@/layouts/UserLayout',
         layout: {
           hideNav: true,
           hideMenu: true,

@@ -86,21 +86,7 @@ const routes: IBestAFSRoute[] = [
         path: '/',
         redirect: '/template',
       },
-      {
-        path: '/account',
-        // component: '@/layouts/UserLayout',
-        layout: {
-          hideNav: true,
-          hideMenu: true,
-        },
-        routes: [
-          {
-            name: '登录',
-            path: 'login',
-            component: '@/pages/account/login/index',
-          },
-        ],
-      },
+      ...AccountRoutes,
       ...PageRoutes,
       <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Routes,
     ],

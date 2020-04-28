@@ -8,14 +8,14 @@ const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/';
 const Permissions = {
   template: {
     dashboard: {
-      index: 'template.dashboard',
+      index: '',
     },
     sample: {
-      index: 'template.sample',
+      index: '',
       list: {
-        index: 'template.sample.list',
-        edit: 'template.sample.list.edit',
-        delete: 'template.sample.list.delete',
+        index: '',
+        edit: '',
+        delete: '',
       },
     },
   },

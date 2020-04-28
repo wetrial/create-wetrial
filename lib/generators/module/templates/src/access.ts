@@ -1,12 +1,10 @@
 import { IKeyValue } from '@wetrial/core/types';
-import { Permissions } from '@config/routes';
 <% if (external.isApp) { %>//<% } %> import <%= external.upperCaseName %>Permissions from '@/modules/<%= external.lowerCaseName %>';
 
 
 export default function(initialState: { permissions: string[] } = { permissions: [] }) {
   const { permissions } = initialState;
   const allPermissions = {
-    ...Permissions,
     <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Permissions,
   };
 

@@ -6,6 +6,7 @@
     "name": "<%= user %>"
   },
   "scripts": {
+    "instal":"yarn install && yarn create wetrial --type modules --subtype install",
     "analyze": "cross-env ANALYZE=1 umi build",
     "build": "umi build",
     "docker:build": "docker-compose -f ./docker/docker-compose.yml build",

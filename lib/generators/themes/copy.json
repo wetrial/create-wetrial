@@ -8,7 +8,6 @@
   "src/themes/index.less",
   "src/themes/utils.less",
   "src/themes/vars.less",
-  "src/access.ts",
   "src/app.tsx",
   "src/global.less"
 ]

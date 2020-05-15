@@ -1,0 +1,14 @@
+[
+  "config/defaultSettings.ts",
+  "config/plugin.chinaWebpack.ts",
+  "config/plugin.config.ts",
+  "config/theme.config.ts",
+  "config/themePluginConfig.ts",
+  ".umirc.ts",
+  "src/themes/index.less",
+  "src/themes/utils.less",
+  "src/themes/vars.less",
+  "src/access.ts",
+  "src/app.tsx",
+  "src/global.less"
+]

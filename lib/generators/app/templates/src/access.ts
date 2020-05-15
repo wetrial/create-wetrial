@@ -1,4 +1,4 @@
-import { IKeyValue } from '@wetrial/core/types';
+import { IKeyValue } from '@wetrial/core';
 <% if (external.isApp) { %>//<% } %> import <%= external.upperCaseName %>Permissions from '@/modules/<%= external.lowerCaseName %>';
 
 

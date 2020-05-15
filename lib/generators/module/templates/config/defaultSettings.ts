@@ -54,7 +54,7 @@ export default {
   menu: {
     locale: false,
   },
-  title: 'Wetrial-Template',
+  title: 'Wetrial',
   pwa: false,
-  iconfontUrl: '//at.alicdn.com/t/font_1077466_58oq1vbr6wi.js', // iconfont库地址
+  iconfontUrl: '//at.alicdn.com/t/font_733142_yrrqxd7u55.js', // iconfont在线图库地址，需要图片请联系前端添加
 } as DefaultSettings;

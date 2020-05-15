@@ -4,76 +4,59 @@ import { stringify } from 'qs';
 import { ILayoutRuntimeConfig } from '@umijs/plugin-layout';
 import { BasicLayoutProps } from '@ant-design/pro-layout';
 import { ConfigProvider, message } from 'antd';
-import validateMessages from '@wetrial/core/validation';
+import validateMessages from '@wetrial/core/lib/validation';
 import { UseAPIProvider } from '@umijs/use-request';
-// import { omit } from 'lodash';
-// import { UnAuthorizedException } from '@wetrial/core/exception';
-import { configUseFormTableFormatResult } from '@wetrial/hooks';
+import { initHooks } from '@wetrial/hooks';
+import { initComponent } from '@wetrial/component';
 import { request } from '@/utils/request';
-import { configIconUrl } from '@/components/IconFont';
-import defaultSettings from '@config/defaultSettings';
-import { getCurrentUser } from '@/services/account';
-import { ICurrentUser } from '@/models/account';
-import { getToken, clearToken } from '@/utils/authority';
-import logo from './assets/logo.png';
-// import 'dayjs/locale/zh-cn';
+import defaultSettings from '../config/defaultSettings';
+import { clearToken } from '@/utils/authority';
 
-configIconUrl(defaultSettings.iconfontUrl);
+(function initConfig() {
+  // 初始化组件配置信息
+  initComponent({
+    iconFontUrl: defaultSettings.iconfontUrl,
+  });
 
-configUseFormTableFormatResult((data) => {
-  return {
-    total: data.totalCount,
-    list: data.items,
-  };
-});
+  // 初始化hooks配置信息，根据需要
+  initHooks({
+    formTableResultFormat: (data) => {
+      return {
+        total: data.totalCount,
+        list: data.items,
+      };
+    },
+  });
+})();
 
 export function render(oldRender) {
   oldRender();
 }
 
 export async function getInitialState() {
-  const token = getToken();
-  const {
-    // @ts-ignore
-    location: { pathname },
-  } = history;
-  const loginPathName = '/account/login';
-  // 未登录的情况
-  if (!token) {
-    if (pathname !== loginPathName) {
-      // @ts-ignore
-      history.push({
-        pathname: loginPathName,
-        query: {
-          redirect: pathname,
-        },
-      });
-    }
-    return {};
-  } else {
-    return (await getCurrentUser()) as ICurrentUser;
-  }
+  // const token = getToken();
+  // const {
+  //   // @ts-ignore
+  //   location: { pathname },
+  // } = history;
+  // const loginPathName = '/account/login';
+  // // 未登录的情况
+  // if (!token) {
+  //   if (pathname !== loginPathName) {
+  //     // @ts-ignore
+  //     history.push({
+  //       pathname: loginPathName,
+  //       query: {
+  //         redirect: pathname,
+  //       },
+  //     });
+  //   }
+  //   return {};
+  // } else {
+  //   return (await getCurrentUser()) as ICurrentUser;
+  // }
+  return {};
 }
-
-// export const dva = {
-//   config: {
-//     onError(err) {
-//       // if (err instanceof UnAuthorizedException) {
-//       //   const unAuthorizedErr = err as UnAuthorizedException;
-//       //   notification.info({
-//       //     message: unAuthorizedErr.message,
-//       //   });
-
-//       //   // eslint-disable-next-line no-console
-//       //   console.log(unAuthorizedErr.message);
-//       // } else {
-//       //   // eslint-disable-next-line no-console
-//       //   console.error(err);
-//       // }
-//       err.preventDefault();
-//     },
-//   },
-// };
 
 export function rootContainer(container) {
   return React.createElement(
@@ -126,7 +109,7 @@ export const layout: ILayoutRuntimeConfig & BasicLayoutProps = {
       return <div>{error}</div>;
     },
   },
-  logo,
+  logo: `${window['publicPath']}logo.png`,
   iconfontUrl: defaultSettings.iconfontUrl,
   menuHeaderRender: (logoDom, titleDom) => {
     return (
@@ -164,6 +147,21 @@ export const layout: ILayoutRuntimeConfig & BasicLayoutProps = {
     ) : (
       <span>{route.breadcrumbName}</span>
     );
+  },
+  logout: () => {
+    clearToken();
+    const {
+      location: { pathname },
+    } = history;
+
+    if (pathname !== '/account/login') {
+      history.push({
+        pathname: '/account/login',
+        search: stringify({
+          redirect: pathname,
+        }),
+      });
+    }
   },
   // footerRender: () => <DefaultFooter links={[]} copyright="2020 湖南微试云技术团队" />,
   // rightContentRender: RightContent,

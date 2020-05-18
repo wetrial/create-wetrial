@@ -148,21 +148,6 @@ export const layout: ILayoutRuntimeConfig & BasicLayoutProps = {
       <span>{route.breadcrumbName}</span>
     );
   },
-  logout: () => {
-    clearToken();
-    const {
-      location: { pathname },
-    } = history;
-
-    if (pathname !== '/account/login') {
-      history.push({
-        pathname: '/account/login',
-        search: stringify({
-          redirect: pathname,
-        }),
-      });
-    }
-  },
   // footerRender: () => <DefaultFooter links={[]} copyright="2020 湖南微试云技术团队" />,
   // rightContentRender: RightContent,
 };

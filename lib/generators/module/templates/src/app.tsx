@@ -4,15 +4,17 @@ import { stringify } from 'qs';
 import { ILayoutRuntimeConfig } from '@umijs/plugin-layout';
 import { BasicLayoutProps } from '@ant-design/pro-layout';
 import { ConfigProvider, message } from 'antd';
-import validateMessages from '@wetrial/core/lib/validation';
+import validateMessages from '@wetrial/core/es/validation';
 import { UseAPIProvider } from '@umijs/use-request';
+// import { omit } from 'lodash';
+// import { UnAuthorizedException } from '@wetrial/core/es/exception';
 import { initHooks } from '@wetrial/hooks';
 import { initComponent } from '@wetrial/component';
 import { request } from '@/utils/request';
 import defaultSettings from '../config/defaultSettings';
 import { clearToken } from '@/utils/authority';
 
-(function initConfig() {
+(function init() {
   // 初始化组件配置信息
   initComponent({
     iconFontUrl: defaultSettings.iconfontUrl,

@@ -44,17 +44,17 @@ export interface DefaultSettings {
 
 export default {
   navTheme: 'light',
-  primaryColor: '#1890ff',
+  primaryColor: '#0070d2',
   layout: 'sidemenu',
   contentWidth: 'Fluid',
   fixedHeader: true,
   autoHideHeader: false,
   fixSiderbar: true,
-  colorWeak: true,
+  colorWeak: false,
   menu: {
     locale: false,
   },
   title: 'Wetrial',
   pwa: false,
-  iconfontUrl: '//at.alicdn.com/t/font_733142_yrrqxd7u55.js', // iconfont在线图库地址，需要图片请联系前端添加
+  iconfontUrl: '//at.alicdn.com/t/font_1077466_58oq1vbr6wi.js', // iconfont库地址
 } as DefaultSettings;

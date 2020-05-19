@@ -14,7 +14,7 @@ export interface DefaultSettings {
   /**
    * nav menu position: `sidemenu` or `topmenu`
    */
-  layout: 'sidemenu' | 'topmenu';
+  layout: 'side' | 'top' | 'mix';
   /**
    * layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
    */
@@ -45,7 +45,7 @@ export interface DefaultSettings {
 export default {
   navTheme: 'light',
   primaryColor: '#0070d2',
-  layout: 'sidemenu',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: true,
   autoHideHeader: false,
@@ -56,5 +56,5 @@ export default {
   },
   title: 'Wetrial',
   pwa: false,
-  iconfontUrl: '//at.alicdn.com/t/font_1077466_58oq1vbr6wi.js', // iconfont库地址
+  iconfontUrl: '//at.alicdn.com/t/font_733142_yrrqxd7u55.js', // iconfont在线图库地址，需要图片请联系前端添加
 } as DefaultSettings;

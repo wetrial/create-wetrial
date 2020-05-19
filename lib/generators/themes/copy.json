@@ -4,10 +4,15 @@
   "config/plugin.config.ts",
   "config/theme.config.ts",
   "config/themePluginConfig.ts",
-  ".umirc.ts",
-  "src/themes/index.less",
-  "src/themes/utils.less",
-  "src/themes/vars.less",
+  "publis/**/*",
+  "src/assets/**/*",
+  "src/components/**/*",
+  "src/locales/**/*",
+  "src/pages/**/*",
+  "src/services/**/*",
+  "src/themes/**/*",
   "src/app.tsx",
-  "src/global.less"
+  "src/global.less",
+  "src/manifest.json",
+  ".umirc.ts"
 ]

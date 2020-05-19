@@ -1,15 +1,18 @@
 import { IKeyValue } from '@wetrial/core';
 <% if (external.isApp) { %>//<% } %> import <%= external.upperCaseName %>Permissions from '@/modules/<%= external.lowerCaseName %>';
+import { IGlobalProps } from '@/services/global.d';
 
-
-export default function(initialState: { permissions: string[] } = { permissions: [] }) {
-  const { permissions } = initialState;
+export default function (initialState: IGlobalProps) {
+  const { currentUser } = initialState;
   const allPermissions = {
     <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Permissions,
   };
 
-  const flatPermissions = dgFlatPermissions(allPermissions, permissions);
-  return flatPermissions;
+  const flatPermissions = dgFlatPermissions(allPermissions, currentUser.permissions);
+    return flatPermissions;
+  } else {
+    return [];
+  }
 }
 
 function dgFlatPermissions(

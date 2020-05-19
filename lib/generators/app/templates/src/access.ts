@@ -4,6 +4,7 @@ import { IGlobalProps } from '@/services/global.d';
 
 export default function (initialState: IGlobalProps) {
   const { currentUser } = initialState;
+  if (currentUser) {
   const allPermissions = {
     <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Permissions,
   };

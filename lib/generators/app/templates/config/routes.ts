@@ -10,11 +10,10 @@ const routes: IBestAFSRoute[] = [
       name: '欢迎',
       flatMenu: true,
     },
-    // component: '@/pages/body',
     routes: [
       {
         path: '/',
-        redirect: '/template',
+        redirect: '/<%= external.lowerCaseName %>',
       },
       ...AccountRoutes,
       <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Routes,

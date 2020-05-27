@@ -1,5 +1,5 @@
 import { IKeyValue } from '@wetrial/core';
-<% if (external.isApp) { %>//<% } %> import <%= external.upperCaseName %>Permissions from '@/modules/<%= external.lowerCaseName %>';
+<% if (external.isApp) { %>//<% } %> import { <%= external.upperCaseName %>Permissions } from '@/modules/<%= external.lowerCaseName %>';
 import { IGlobalProps } from '@/services/global.d';
 
 export default function (initialState: IGlobalProps) {

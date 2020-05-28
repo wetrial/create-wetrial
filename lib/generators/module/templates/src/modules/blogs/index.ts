@@ -4,7 +4,7 @@ import { THEME_TYPE } from '../../constants';
 const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/';
 
 export const <%= external.upperCaseName %>Permissions = {
-  <%= external.lowerCaseName %>: {
+  <%= external.fullLowerCaseName %>: {
 
   },
 };

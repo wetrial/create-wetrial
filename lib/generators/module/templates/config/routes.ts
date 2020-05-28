@@ -1,6 +1,6 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
 // import AccountRoutes from '../src/modules/account';
-<% if (external.isApp) { %>//<% } %> import {<%= external.upperCaseName %>Routes} from '../src/modules/<%= external.lowerCaseName %>';
+<% if (external.isApp) { %>//<% } %>import {<%= external.upperCaseName %>Routes} from '../src/modules/<%= external.lowerCaseName %>';
 import {filterRouteMenu} from '../src/utils';
 import packageModule from '../package-module.json';
 

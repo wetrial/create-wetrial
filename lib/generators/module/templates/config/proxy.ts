@@ -7,14 +7,14 @@
  */
 export default {
   dev: {
-    // '/api': {
-    //   target: 'https://localhost:44362/',
-    //   //changeOrigin: true,
-    //   secure: false, // 不进行证书验证
-    //   logLevel: 'debug',
-    //   // changeOrigin: true,
-    //   // pathRewrite: { '^': '' },
-    // },
+    '/api': {
+      target: 'https://localhost:44362/',
+      // changeOrigin: true,
+      secure: false, // 不进行证书验证
+      logLevel: 'debug',
+      // changeOrigin: true,
+      // pathRewrite: { '^': '' },
+    },
   },
   test: {
     // '/api/': {

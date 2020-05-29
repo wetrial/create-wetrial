@@ -1,5 +1,4 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-import { THEME_TYPE } from '../../constants';
 
 const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/';
 
@@ -23,7 +22,6 @@ export const <%= external.upperCaseName %>Routes: IBestAFSRoute[] = [
       },
       {
         path: 'dashboard',
-        // group: THEME_TYPE.PLAT_FORM,
         name: '看板',
         // access: <%= external.upperCaseName %>Permissions.<%= external.lowerCaseName %>.,
         component: `${ROUTE_BASE}dashboard/index`,

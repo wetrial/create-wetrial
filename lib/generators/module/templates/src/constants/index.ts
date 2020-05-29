@@ -154,10 +154,3 @@ export const TABLE_SCROLL_WIDTH = 'max-content';
 
 // 默认日期时间格式
 export const DEFAULT_DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
-
-// 主题类型
-export enum THEME_TYPE {
-  PLAT_FORM = 'platform',
-  ORGANIZATION = 'organization',
-  PROJECT = 'project',
-}

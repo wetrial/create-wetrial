@@ -4,7 +4,7 @@
   "config/plugin.config.ts",
   "config/theme.config.ts",
   "config/themePluginConfig.ts",
-  "publis/**/*.*",
+  "public/**/*.*",
   "src/assets/**/*.*",
   "src/components/**/*.*",
   "src/locales/**/*.*",

@@ -26,8 +26,8 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}\\cli.js",
-      "args": ["--type", "themes", "--subtype", "organization"],
-      // "args": ["--type", "module", "--subtype", "create", "@wetrial/ae_sae"],
+      // "args": ["--type", "themes", "--subtype", "organization"],
+      "args": ["--type", "modules", "--subtype", "publish-all"],
       "sourceMaps": true
     }
   ]

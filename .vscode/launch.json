@@ -27,7 +27,7 @@
       "name": "Launch Program",
       "program": "${workspaceFolder}\\cli.js",
       // "args": ["--type", "themes", "--subtype", "organization"],
-      "args": ["--type", "modules", "--subtype", "publish-all"],
+      "args": ["--type", "modules", "--subtype", "publish-all", "--ssubtype", "5.0.0-b9"],
       "sourceMaps": true
     }
   ]

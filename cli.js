@@ -24,12 +24,14 @@ if (!semver.satisfies(process.version, '>= 10.0.0')) {
 }
 
 const name = args._[0] || '';
-const { type, subtype } = args;
+const { type, subtype, ssubtype } = args;
 delete args.type;
 delete args.subtype;
+delete args.ssubtype;
 run({
   name,
   type,
   subtype,
+  ssubtype,
   args,
 });

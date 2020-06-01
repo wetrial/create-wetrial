@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from 'react';
 import { history } from 'umi';
 import { BasicLayoutProps } from '@ant-design/pro-layout';
@@ -14,10 +15,11 @@ import { getCurrentUser } from '@/services/account';
 import { request } from '@/utils/request';
 import { getToken } from '@/utils/authority';
 import { IGlobalProps } from '@/services/global.d';
+// import { findRouteMenu, filterRouteMenu } from '@/utils';
 import RightContent from '@/components/RightContent';
+import moment from 'moment';
 import logo from './assets/logo.png';
 import zhCN from 'antd/es/locale/zh_CN';
-import moment from 'moment';
 import 'moment/locale/zh-cn';
 
 moment.locale('zh-cn');
@@ -44,9 +46,30 @@ moment.locale('zh-cn');
   });
 })();
 
-export function render(oldRender) {
-  oldRender();
-}
+// let extraInfo;
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// export function patchRoutes({ routes }) {
+//   const sample = findRouteMenu(routes, 'sample');
+//   if (sample) {
+//     sample.routes = sample.routes || [];
+//     sample.routes.push({
+//       path: '/template/sample/list3',
+//       name: '列表3',
+//       group: 'list2',
+//       component: require('@/pages/template/sample/list/index').default,
+//     });
+//   }
+//   // eslint-disable-next-line no-param-reassign
+//   routes = filterRouteMenu(routes, extraInfo.groups);
+//   console.log(routes);
+// }
+
+// export function render(oldRender) {
+//   get('/api/global/getApp').then((result) => {
+//     extraInfo = result;
+//     oldRender();
+//   });
+// }
 
 export async function getInitialState(): Promise<IGlobalProps> {
   const token = getToken();

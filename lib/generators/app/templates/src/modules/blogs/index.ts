@@ -1,6 +1,6 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
 
-const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/';
+const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/pages/';
 
 export const <%= external.upperCaseName %>Permissions = {
   <%= external.fullLowerCaseName %>: {

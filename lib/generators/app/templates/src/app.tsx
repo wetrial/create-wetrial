@@ -8,6 +8,7 @@ import { UseAPIProvider } from '@umijs/use-request';
 // import { omit } from 'lodash';
 // import { UnAuthorizedException } from '@wetrial/core/es/exception';
 import { initWetrialCore } from '@wetrial/core';
+// import { filterRoutesByGroups } from '@wetrial/core/es/route-helper';
 import { initHooks } from '@wetrial/hooks';
 import { initComponent } from '@wetrial/component';
 import defaultSettings from '@config/defaultSettings';
@@ -15,7 +16,7 @@ import { getCurrentUser } from '@/services/account';
 import { request as requestMethod } from '@/utils/request';
 import { getToken } from '@/utils/authority';
 import { IGlobalProps } from '@/services/global.d';
-// import { findRouteMenu, filterRouteMenu } from '@/utils';
+
 import RightContent from '@/components/RightContent';
 import moment from 'moment';
 import logo from './assets/logo.png';

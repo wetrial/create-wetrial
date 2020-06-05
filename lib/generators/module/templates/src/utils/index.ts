@@ -25,3 +25,20 @@ export function historyPush(opt: string | { pathname: string; query?: IKeyValue<
     });
   }
 }
+
+/**
+ * 获取带前缀的pathanme
+ * @param pathname 路径
+ */
+export function getFullPathName(pathname: string) {
+  const oid = getOid();
+  const pid = getPid();
+  let pathnamePrefix = '';
+  if (oid) {
+    pathnamePrefix += `/${oid}`;
+  }
+  if (pid) {
+    pathnamePrefix += `/${pid}`;
+  }
+  return `${pathnamePrefix}${pathname}`;
+}

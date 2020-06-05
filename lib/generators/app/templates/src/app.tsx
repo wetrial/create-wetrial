@@ -1,26 +1,24 @@
-/* eslint-disable global-require */
 import React from 'react';
 import { history } from 'umi';
 import { BasicLayoutProps } from '@ant-design/pro-layout';
 import { ConfigProvider, message } from 'antd';
-import validateMessages from '@wetrial/core/es/validation';
 import { UseAPIProvider } from '@umijs/use-request';
 // import { omit } from 'lodash';
 // import { UnAuthorizedException } from '@wetrial/core/es/exception';
 import { initWetrialCore } from '@wetrial/core';
-// import { filterRoutesByGroups } from '@wetrial/core/es/route-helper';
+import validateMessages from '@wetrial/core/es/validation';
+// import { patchRouteBase } from '@wetrial/core/es/route-helper';
 import { initHooks } from '@wetrial/hooks';
 import { initComponent } from '@wetrial/component';
 import defaultSettings from '@config/defaultSettings';
 import { getCurrentUser } from '@/services/account';
 import { request as requestMethod } from '@/utils/request';
-import { getToken } from '@/utils/authority';
+import { getToken } from '@/utils/authority'; // , clearPidAndOid, setOid, getOid
 import { IGlobalProps } from '@/services/global.d';
-
 import RightContent from '@/components/RightContent';
-import moment from 'moment';
 import logo from './assets/logo.png';
 import zhCN from 'antd/es/locale/zh_CN';
+import moment from 'moment';
 import 'moment/locale/zh-cn';
 
 moment.locale('zh-cn');
@@ -30,7 +28,16 @@ moment.locale('zh-cn');
   initWetrialCore({
     RSAKey:
       'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC5HI3rQq9BKcruxYfqgnkhyuI+9CGf1jYsyzWYpdw/3Cv9TX4u5w2GjcYoxzBY5s6ZcXbb4oGoLt9rn93g7sKT01tyUO/iQdYiOTvPsFiqcInMVHhaazBy5nH50owObGs+PRubc8bP+a+DT3vV8+l7TEd/H9pdwok/r7GlIIe5uQIDAQAB',
+    // getGlobalHeader: () => {
+    //   const headers = {};
+    //   const oid = getOid();
+    //   if (oid) {
+    //     headers['oid'] = oid;
+    //   }
+    //   return headers;
+    // },
   });
+
   // 初始化组件配置信息
   initComponent({
     iconFontUrl: defaultSettings.iconfontUrl,
@@ -47,29 +54,26 @@ moment.locale('zh-cn');
   });
 })();
 
-// let extraInfo;
-// // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// export function patchRoutes({ routes }) {
-//   const sample = findRouteMenu(routes, 'sample');
-//   if (sample) {
-//     sample.routes = sample.routes || [];
-//     sample.routes.push({
-//       path: '/template/sample/list3',
-//       name: '列表3',
-//       group: 'list2',
-//       component: require('@/pages/template/sample/list/index').default,
-//     });
-//   }
-//   // eslint-disable-next-line no-param-reassign
-//   routes = filterRouteMenu(routes, extraInfo.groups);
-//   console.log(routes);
-// }
+export function render(oldRender) {
+  // const {
+  //   location: { pathname },
+  // } = history;
 
-// export function render(oldRender) {
-//   get('/api/global/getApp').then((result) => {
-//     extraInfo = result;
-//     oldRender();
-//   });
+  // // 解析出base参数
+  // clearPidAndOid();
+  // const match = /^\/([^/]+)\//gi.exec(pathname);
+  // if (match && match[1]) {
+  //   setOid(match[1]);
+  //   initWetrialCore({
+  //     routeProfix: `/${match[1]}`,
+  //   });
+  // }
+
+  oldRender();
+}
+
+// export function patchRoutes({ routes }) {
+//   patchRouteBase(routes);
 // }
 
 export async function getInitialState(): Promise<IGlobalProps> {
@@ -78,6 +82,7 @@ export async function getInitialState(): Promise<IGlobalProps> {
     location: { pathname },
   } = history;
   const loginPathName = '/account/login';
+
   // 未登录的情况
   if (!token) {
     if (pathname !== loginPathName) {
@@ -110,6 +115,7 @@ export function rootContainer(container) {
       },
       locale: zhCN,
     },
+    // container,
     React.createElement(
       UseAPIProvider,
       {

@@ -1,28 +1,26 @@
 import { history } from 'umi';
 import { IKeyValue } from '@wetrial/core';
-import { getPid, getOid } from '@/utils/authority';
+import { getRoutePreFix } from '@wetrial/core/es/route-helper';
 
 /**
  *
  * @param opt
  */
-export function historyPush(opt: string | { pathname: string; query?: IKeyValue<string> }) {
-  const oid = getOid();
-  const pid = getPid();
-  let pathnamePrefix = '';
-  if (oid) {
-    pathnamePrefix += `/${oid}`;
-  }
-  if (pid) {
-    pathnamePrefix += `/${pid}`;
-  }
-  if (typeof opt === 'string') {
-    history.push(`${pathnamePrefix}${opt}`);
+export function historyPush(
+  opt: string | { pathname: string; query?: IKeyValue<string>; search?: string },
+) {
+  const pathnamePrefix = getRoutePreFix();
+  if (pathnamePrefix) {
+    if (typeof opt === 'string') {
+      history.push(`${pathnamePrefix}${opt}`);
+    } else {
+      history.push({
+        ...opt,
+        pathname: `${pathnamePrefix}${opt.pathname}`,
+      });
+    }
   } else {
-    history.push({
-      ...opt,
-      pathname: `${pathnamePrefix}${opt.pathname}`,
-    });
+    history.push(opt);
   }
 }
 
@@ -31,14 +29,6 @@ export function historyPush(opt: string | { pathname: string; query?: IKeyValue<
  * @param pathname 路径
  */
 export function getFullPathName(pathname: string) {
-  const oid = getOid();
-  const pid = getPid();
-  let pathnamePrefix = '';
-  if (oid) {
-    pathnamePrefix += `/${oid}`;
-  }
-  if (pid) {
-    pathnamePrefix += `/${pid}`;
-  }
+  const pathnamePrefix = getRoutePreFix();
   return `${pathnamePrefix}${pathname}`;
 }

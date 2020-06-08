@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-// import AccountRoutes from '../src/modules/account';
+// import { AccountRoutes } from '../src/modules/account';
 <% if (external.isApp) { %>//<% } %>import {<%= external.upperCaseName %>Routes} from '../src/modules/<%= external.lowerCaseName %>';
 
 // umi routes: https://umijs.org/zh/guide/router.html

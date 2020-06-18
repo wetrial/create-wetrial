@@ -2,11 +2,11 @@ import React from 'react';
 import { history } from 'umi';
 import { BasicLayoutProps } from '@ant-design/pro-layout';
 import { ConfigProvider, message } from 'antd';
-import { UseAPIProvider } from '@umijs/use-request';
+import validateMessages from '@wetrial/core/es/validation';
+import { UseRequestProvider } from '@ahooksjs/use-request';
 // import { omit } from 'lodash';
 // import { UnAuthorizedException } from '@wetrial/core/es/exception';
 import { initWetrialCore } from '@wetrial/core';
-import validateMessages from '@wetrial/core/es/validation';
 // import { patchRouteBase } from '@wetrial/core/es/route-helper';
 import { initHooks } from '@wetrial/hooks';
 import { initComponent } from '@wetrial/component';
@@ -115,9 +115,8 @@ export function rootContainer(container) {
       },
       locale: zhCN,
     },
-    // container,
     React.createElement(
-      UseAPIProvider,
+      UseRequestProvider,
       {
         value: {
           requestMethod: (param) => requestMethod(param),

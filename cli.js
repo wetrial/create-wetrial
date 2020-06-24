@@ -65,7 +65,6 @@ npmview(pkgName, (err, version, moduleInfo) => {
                     **************************************************************
       `),
     );
-    return;
   }
   run({
     name,

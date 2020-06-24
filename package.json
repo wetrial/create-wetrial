@@ -1,6 +1,6 @@
 {
   "name": "create-wetrial",
-  "version": "4.4.1",
+  "version": "4.5.0",
   "description": "Creates a wetrial application using the command line.",
   "homepage": "https://github.com/wetrial/create-wetrial",
   "bugs": {
@@ -36,9 +36,9 @@
     "glob": "^7.1.6",
     "inquirer": "^7.1.0",
     "mkdirp": "^1.0.4",
+    "npmview": "^0.0.4",
     "prettier": "^2.0.5",
     "semver": "^7.3.2",
-    "npmview": "^0.0.4",
     "sort-package-json": "^1.42.2",
     "sylvanas": "^0.4.3",
     "umi-utils": "^1.7.2",

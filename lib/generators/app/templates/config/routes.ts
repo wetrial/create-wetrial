@@ -13,7 +13,7 @@ const routes: IBestAFSRoute[]= [
     routes: [
       {
         path: '/',
-        redirect: '/<%= external.lowerCaseName %>',
+        redirect: '/<%= external.trimThemeLowerCaseName %>',
       },
       // ...AccountRoutes,
       <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Routes,

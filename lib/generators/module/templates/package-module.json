@@ -1,5 +1,5 @@
 {
   "app-type": "<% if (external.isApp) { %>app<% } else { %>module<% } %>",
-  "modules": { "@wt/account": "" },
-  "theme": ""
+  "modules": {},
+  "theme": "<%= theme %>"
 }

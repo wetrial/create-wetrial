@@ -19,9 +19,9 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
   const loginOut = async () => {
     clearToken();
-    if (history.location.pathname !== '/account/login') {
+    if (history.location.pathname !== '/membership/login') {
       history.replace({
-        pathname: '/account/login',
+        pathname: '/membership/login',
         search: stringify({
           redirect: history.location.pathname,
         }),
@@ -36,7 +36,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       loginOut();
       return;
     }
-    history.push(`/account/${key}`);
+    history.push(`/membership/${key}`);
   }, []);
 
   const loading = (

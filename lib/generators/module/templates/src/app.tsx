@@ -81,7 +81,7 @@ export async function getInitialState(): Promise<IGlobalProps> {
   const {
     location: { pathname },
   } = history;
-  const loginPathName = '/account/login';
+  const loginPathName = '/membership/login';
 
   // 未登录的情况
   if (!token) {

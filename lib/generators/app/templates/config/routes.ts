@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-// import { AccountRoutes } from '../src/modules/account';
+import { MembershipShareRoutes } from '../src/modules/membership-share';
 <% if (external.isApp) { %>//<% } %>import {<%= external.upperCaseName %>Routes} from '../src/modules/<%= external.lowerCaseName %>';
 
 // umi routes: https://umijs.org/zh/guide/router.html
@@ -15,7 +15,7 @@ const routes: IBestAFSRoute[]= [
         path: '/',
         redirect: '/<%= external.trimThemeLowerCaseName %>',
       },
-      // ...AccountRoutes,
+      // ...MembershipShareRoutes,
       <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Routes,
     ],
   },

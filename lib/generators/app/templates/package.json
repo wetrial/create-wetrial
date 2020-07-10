@@ -16,14 +16,14 @@
     "functions:build": "netlify-lambda build ./lambda",
     "functions:run": "cross-env NODE_ENV=dev netlify-lambda serve ./lambda",
     "i18n-remove": "pro i18n-remove --locale=zh-CN --write",
-    "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint": "umi g tmp && npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint:prettier": "prettier --check \"src/**/*\" --end-of-line auto",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
     "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
-    "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
-    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "prettier": "prettier -c --write \"src/**/*\"",
     "start": "cross-env REACT_APP_ENV=dev umi dev",
     "dev": "npm run start:dev",
     "start:dev": "cross-env REACT_APP_ENV=dev MOCK=none umi dev",
@@ -43,13 +43,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write",
-      "git add"
+    "**/*.less": "stylelint --syntax less",
+    "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
     ]
   },
   "browserslist": [
@@ -58,14 +55,14 @@
     "not ie <= 10"
   ],
   "dependencies": {
-    "@ant-design/pro-layout": "^6.2.0",
+    "@ant-design/pro-layout": "^6.2.2",
     "@wetrial/component": "^0.2.5",
     "@wetrial/core": "^3.2.3",
     "@wetrial/hooks": "^3.0.1",
     "ahooks": "^2.1.0",
     "antd": "^4.4.1",
     "classnames": "^2.2.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "path-to-regexp": "^6.1.0",
     "qs": "^6.9.4",
@@ -77,10 +74,10 @@
     "use-merge-value": "^1.0.2"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.3",
+    "@types/jest": "^26.0.4",
     "@umijs/fabric": "^1.2.14",
-    "@umijs/preset-react": "^1.5.11",
-    "@umijs/test": "^3.2.6",
+    "@umijs/preset-react": "1.5.15",
+    "@umijs/test": "^3.2.9",
     "@wetrial/theme-<%= theme %>": "latest",
     "chalk": "^4.1.0",
     "cross-env": "^7.0.2",
@@ -90,13 +87,12 @@
     "husky": "^4.2.5",
     "jest-puppeteer": "^4.4.0",
     "jsdom-global": "^3.0.2",
-    "lint-staged": "^10.2.7",
+    "lint-staged": "^10.2.11",
     "mockjs": "^1.1.0",
     "prettier": "^2.0.5",
-    "stylelint": "^13.5.0",
-    "stylelint-config-standard": "^20.0.0",
+    "stylelint": "^13.6.1",
     "typescript": "^3.9.3",
-    "umi": "^3.2.6"
+    "umi": "^3.2.9"
   },
   "optionalDependencies": {},
   "engines": {

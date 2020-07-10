@@ -11,7 +11,7 @@ export default {
       target: 'https://localhost:44362/',
       // changeOrigin: true,
       secure: false, // 不进行证书验证
-      logLevel: 'debug',
+      // logLevel: 'debug',
       // changeOrigin: true,
       // pathRewrite: { '^': '' },
     },

@@ -14,7 +14,7 @@ import defaultSettings from '@config/defaultSettings';
 import { getCurrentUser } from '@/services/account';
 import { request as requestMethod } from '@/utils/request';
 import { getToken } from '@/utils/authority'; // , clearPidAndOid, setOid, getOid
-import { IGlobalProps } from '@/services/global.d';
+import { IGlobalProps, IUser } from '@/services/global.d';
 import RightContent from '@/components/RightContent';
 import logo from './assets/logo.png';
 import zhCN from 'antd/es/locale/zh_CN';
@@ -78,31 +78,36 @@ export function render(oldRender) {
 
 export async function getInitialState(): Promise<IGlobalProps> {
   const token = getToken();
-  const {
-    location: { pathname },
-  } = history;
-  const loginPathName = '/membership/login';
-
-  // 未登录的情况
-  if (!token) {
-    if (pathname !== loginPathName) {
-      history.push({
-        pathname: loginPathName,
-        query: {
-          redirect: pathname,
-        },
-      });
+  try {
+    // 未登录的情况
+    if (!token) {
+      throw new Error('UNLOGIN');
     }
-    return {
-      settings: defaultSettings,
-    };
-  } else {
     const currentUser = await getCurrentUser();
     return {
       currentUser,
       settings: defaultSettings,
     };
+  } catch (error) {
+    const { message: errorMessage } = error;
+    const {
+      location: { pathname },
+    } = history;
+    // 未登录，处理跳转到登录页面
+    if (errorMessage === 'UNLOGIN') {
+      const loginPathName = '/account/login';
+      pathname !== loginPathName &&
+        history({
+          pathname: loginPathName,
+          query: {
+            redirect: pathname,
+          },
+        });
+    }
   }
+  return {
+    settings: defaultSettings,
+  };
 }
 
 const codeMessage = {

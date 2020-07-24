@@ -97,7 +97,7 @@ export async function getInitialState(): Promise<IGlobalProps> {
     if (errorMessage === 'UNLOGIN') {
       const loginPathName = '/account/login';
       pathname !== loginPathName &&
-        history({
+        history.push({
           pathname: loginPathName,
           query: {
             redirect: pathname,

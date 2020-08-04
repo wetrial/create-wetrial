@@ -2,10 +2,10 @@ import {
   addRequestInterceptor,
   addResponseInterceptor,
   commonRequestInterceptor,
-  commonResponseInterceptor,
+  commonResponseWithRefreshTokenInterceptor,
 } from '@wetrial/core/es/request';
 
 addRequestInterceptor(...commonRequestInterceptor);
-addResponseInterceptor(...commonResponseInterceptor);
+addResponseInterceptor(...commonResponseWithRefreshTokenInterceptor);
 
 export { request, get, post, put, patch, del, head, options } from '@wetrial/core';

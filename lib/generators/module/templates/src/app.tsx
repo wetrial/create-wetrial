@@ -11,9 +11,9 @@ import { initWetrialCore } from '@wetrial/core';
 import { initHooks } from '@wetrial/hooks';
 import { initComponent } from '@wetrial/component';
 import defaultSettings from '@config/defaultSettings';
-import { getCurrentUser } from '@/services/account';
+import { getCurrentUser, refreshToken } from '@modules/membership-share/services/account';
 import { request as requestMethod } from '@/utils/request';
-import { getToken } from '@/utils/authority'; // , clearPidAndOid, setOid, getOid
+import { getToken,clearToken } from '@/utils/authority'; // , clearPidAndOid, setOid, getOid
 import { IGlobalProps, IUser } from '@/services/global.d';
 import RightContent from '@/components/RightContent';
 import logo from './assets/logo.png';
@@ -36,6 +36,14 @@ moment.locale('zh-cn');
     //   }
     //   return headers;
     // },
+    configRefreshToken: () => {
+      const tokenData = getToken();
+      return refreshToken(tokenData).catch((error) => {
+        console.error('刷新token失败:', error);
+        clearToken();
+        window.location.href = '/';
+      });
+    },
   });
 
   // 初始化组件配置信息
@@ -76,6 +84,7 @@ export function render(oldRender) {
 //   patchRouteBase(routes);
 // }
 
+
 export async function getInitialState(): Promise<IGlobalProps> {
   const token = getToken();
   try {
@@ -83,7 +92,18 @@ export async function getInitialState(): Promise<IGlobalProps> {
     if (!token) {
       throw new Error('UNLOGIN');
     }
-    const currentUser = await getCurrentUser();
+    const user = await getCurrentUser();
+    let currentUser: IUser = {} as IUser;
+    currentUser = {
+      name: user.fullName,
+      avatar: user.avatar,
+      id: user.id,
+      email: user.email,
+      unreadCount: 0,
+      phone: user.phone,
+      permissions: user.permissions || [],
+    };
+
     return {
       currentUser,
       settings: defaultSettings,
@@ -95,9 +115,9 @@ export async function getInitialState(): Promise<IGlobalProps> {
     } = history;
     // 未登录，处理跳转到登录页面
     if (errorMessage === 'UNLOGIN') {
-      const loginPathName = '/account/login';
+      const loginPathName = '/membership/login';
       pathname !== loginPathName &&
-        history.push({
+        historyPush({
           pathname: loginPathName,
           query: {
             redirect: pathname,
@@ -109,6 +129,7 @@ export async function getInitialState(): Promise<IGlobalProps> {
     settings: defaultSettings,
   };
 }
+
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -154,7 +175,7 @@ export function rootContainer(container) {
               const errorText = message || codeMessage[status] || statusText;
 
               notification.error({
-                message: `请求错误 ${status}`,
+                message: `请求出错啦`,
                 description: errorText,
               });
             }

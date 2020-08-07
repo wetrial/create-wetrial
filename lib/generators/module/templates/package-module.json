@@ -1,5 +1,9 @@
 {
   "app-type": "<% if (external.isApp) { %>app<% } else { %>module<% } %>",
-  "modules": {},
+  "modules": {
+    "@wt/membership-share": "latest",
+    "@wt/code-list-management": "latest",
+    "@wt/audit-logging-platform-admin": "latest"
+  },
   "theme": "<%= theme %>"
 }

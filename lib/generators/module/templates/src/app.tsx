@@ -13,7 +13,7 @@ import { initComponent } from '@wetrial/component';
 import defaultSettings from '@config/defaultSettings';
 import { getCurrentUser, refreshToken } from '@modules/membership-share/services/account';
 import { request as requestMethod } from '@/utils/request';
-import { getToken,clearToken } from '@/utils/authority'; // , clearPidAndOid, setOid, getOid
+import { getToken, clearToken } from '@/utils/authority'; // , clearPidAndOid, setOid, getOid
 import { IGlobalProps, IUser } from '@/services/global.d';
 import RightContent from '@/components/RightContent';
 import logo from './assets/logo.png';
@@ -84,7 +84,6 @@ export function render(oldRender) {
 //   patchRouteBase(routes);
 // }
 
-
 export async function getInitialState(): Promise<IGlobalProps> {
   const token = getToken();
   try {
@@ -130,7 +129,6 @@ export async function getInitialState(): Promise<IGlobalProps> {
   };
 }
 
-
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -168,22 +166,23 @@ export function rootContainer(container) {
           onError: (response) => {
             if (response && response.status) {
               const { status, statusText, data } = response;
+              const notifyFunc = status >= 500 ? notification.error : notification.info;
               let message;
               if (data && typeof data === 'object' && 'error' in data) {
                 message = data.error?.message;
               }
               const errorText = message || codeMessage[status] || statusText;
-
-              notification.error({
-                message: `请求出错啦`,
+              notifyFunc({
+                key: '__global_message',
+                message: 'Wetrial提示',
                 description: errorText,
               });
             }
-
             if (!response) {
               notification.error({
-                description: '您的网络发生异常，无法连接服务器',
-                message: '网络异常',
+                key: '__global_message',
+                message: '网络开小差啦',
+                description: '您的网络发生异常，请重试或者联系客服',
               });
             }
             throw response;

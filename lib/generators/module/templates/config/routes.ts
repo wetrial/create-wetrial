@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-import { MembershipShareRoutes } from '../src/modules/membership-share';
+// import { MembershipShareRoutes } from '../src/modules/membership-share';
 <% if (external.isApp) { %>//<% } %>import {<%= external.upperCaseName %>Routes} from '../src/modules/<%= external.lowerCaseName %>';
 
 // umi routes: https://umijs.org/zh/guide/router.html

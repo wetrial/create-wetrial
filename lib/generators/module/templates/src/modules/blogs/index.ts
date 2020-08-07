@@ -1,5 +1,5 @@
 import { IBestAFSRoute } from '@umijs/plugin-layout';
-import { GROUP } from '@wetrial/core/lib/route-helper';
+// import { GROUP } from '@wetrial/core/lib/route-helper';
 
 const ROUTE_BASE = '@/modules/<%= external.lowerCaseName %>/pages/';
 

@@ -1,9 +1,8 @@
 {
   "app-type": "<% if (external.isApp) { %>app<% } else { %>module<% } %>",
   "modules": {
-    "@wt/membership-share": "latest",
-    "@wt/code-list-management": "latest",
-    "@wt/audit-logging-platform-admin": "latest"
+    <% if (!external.isApp) { %><% if (theme==='platform-admin') { %>"@wt/audit-logging-platform-admin": "latest",<% } %><% } %>
+    "@wt/membership-share": "latest"
   },
   "theme": "<%= theme %>"
 }

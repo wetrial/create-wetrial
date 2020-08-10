@@ -166,7 +166,7 @@ export function rootContainer(container) {
           onError: (response) => {
             if (response && response.status) {
               const { status, statusText, data } = response;
-              const notifyFunc = status >= 500 ? notification.error : notification.info;
+              const notifyFunc = status >= 500 ? notification.error : notification.warn;
               let message;
               if (data && typeof data === 'object' && 'error' in data) {
                 message = data.error?.message;

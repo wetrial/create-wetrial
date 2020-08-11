@@ -1,19 +1,19 @@
 import { IKeyValue } from '@wetrial/core';
-<% if (external.isApp) { %>//<% } %> import { <%= external.upperCaseName %>Permissions } from '@/modules/<%= external.lowerCaseName %>';
 import { IGlobalProps } from '@/services/global.d';
+<% if (theme==='platform-admin') { %>import { MembershipPlatformAdminPermissions } from '@/modules/membership-platform-admin';
+import { AuditLoggingPlatformAdminPermissions } from '@/modules/audit-logging-platform-admin';<% } %>
+<% if (theme==='org-admin') { %>import { MembershipOrgAdminPermissions } from '@/modules/membership-org-admin';<% } %>
+<% if (!external.isApp) { %>import { <%= external.upperCaseName %>Permissions } from '@/modules/<%= external.lowerCaseName %>';<% } %>
 
-export default function (initialState: IGlobalProps={}) {
+export default (initialState: IGlobalProps={})=> {
   const { currentUser } = initialState;
-  if (currentUser) {
   const allPermissions = {
-    <% if (external.isApp) { %>//<% } %> ...<%= external.upperCaseName %>Permissions,
+    <% if (theme==='platform-admin') { %>...MembershipPlatformAdminPermissions,
+    ...AuditLoggingPlatformAdminPermissions,<% } %>
+    <% if (theme==='org-admin') { %>...MembershipOrgAdminPermissions,<% } %>
+    <% if (!external.isApp) { %>...<%= external.upperCaseName %>Permissions,<% } %>
   };
-
-  const flatPermissions = dgFlatPermissions(allPermissions, currentUser?.permissions);
-    return flatPermissions;
-  } else {
-    return [];
-  }
+  return dgFlatPermissions(allPermissions, currentUser?.permissions);
 }
 
 function dgFlatPermissions(

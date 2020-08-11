@@ -1,7 +1,9 @@
 {
   "app-type": "<% if (external.isApp) { %>app<% } else { %>module<% } %>",
   "modules": {
-    <% if (!external.isApp) { %><% if (theme==='platform-admin') { %>"@wt/audit-logging-platform-admin": "latest",<% } %><% } %>
+    <% if (theme==='platform-admin') { %>"@wt/membership-platform-admin":"latest",
+    "@wt/audit-logging-platform-admin": "latest",<% } %>
+    <% if (theme==='org-admin') { %>"@wt/membership-org-admin":"latest",<% } %>
     "@wt/membership-share": "latest"
   },
   "theme": "<%= theme %>"

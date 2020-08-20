@@ -26,8 +26,9 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}\\cli.js",
-      // "args": ["--type", "themes", "--subtype", "organization"],
-      "args": ["--type", "modules", "--subtype", "publish-all", "--ssubtype", "5.0.0-b9"],
+      "args": ["--type", "module", "--subtype", "update"],
+      "cwd": "D:\\Work\\Project\\abp\\WtFoundation.Membership\\react\\membership-platform-admin",
+      // "args": ["--type", "modules", "--subtype", "publish-all", "--ssubtype", "5.0.0-b9"],
       "sourceMaps": true
     }
   ]

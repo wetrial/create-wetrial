@@ -2,6 +2,7 @@
 /scripts
 /config
 .history
+.eslintrc.js
 <% if (external.isApp) { %>
 /src/modules
 <% } %>

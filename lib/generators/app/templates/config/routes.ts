@@ -25,6 +25,9 @@ const routes: IBestAFSRoute[]= [
       <% if (!external.isApp) { %>...<%= external.upperCaseName %>Routes,<% } %>
     ],
   },
+      {
+        component: '@/pages/exception/404',
+      },
 ];
 
 export default routes;
